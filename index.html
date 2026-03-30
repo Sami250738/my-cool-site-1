@@ -243,7 +243,7 @@
         <div class="rule"></div>
         <p>Welcome to <em>Jayed Insights</em> — a content writing platform built on the belief that great writing can illuminate both the boardroom and the boundary rope.</p>
         <p>Whether you need sharp, authoritative content for your business brand or passionate, informed coverage of cricket's ever-unfolding narratives, this is where precision meets storytelling.</p>
-        <p>Every piece is crafted with research, clarity, and an authentic voice — because good content is never generic.</p>
+        <p>Every piece is crafted with research, clarity, and an authentic voice because good content is never generic.</p>
       </div>
       <div class="about-columns fade-in">
         <div class="about-card" onclick="showPage('business')">
@@ -360,7 +360,7 @@
         <p class="about-title">Business &amp; Cricket Content Writer · Marketing Professional</p>
         <p class="bio">Business graduate with hands-on experience in sales execution, lead generation, merchant onboarding, and marketing. Proven track record of achieving BDT 700k sales within three months and building structured lead-to-client systems generating consistent monthly conversions. Strong interest in marketing and sales.</p>
         <div class="about-me-contacts">
-          <a href="mailto:abujahedsami@gmail.com" class="about-contact-pill">✉ abujahedsami@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#c8a9aabda2a9a0adacbba9a5a188afa5a9a1a4e6aba7a5" class="about-contact-pill">✉ <span class="__cf_email__" data-cfemail="107172657a7178757463717d7950777d71797c3e737f7d">[email&#160;protected]</span></a>
           <a href="tel:+8801885317799" class="about-contact-pill">📞 +880 1885 317799</a>
           <a href="https://www.linkedin.com/in/abu-jayed-sami-055bb8221/" target="_blank" class="about-contact-pill">LinkedIn →</a>
         </div>
@@ -473,7 +473,7 @@
   <footer><div class="footer-brand">Jayed Insights</div><div class="footer-copy">&copy; 2026 Jayed Insights. All rights reserved.</div></footer>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
  function calculateReadingTime(text) {
   const wordsPerMinute = 200;
   const cleanText = text.replace(/<[^>]*>/g, '');
@@ -650,6 +650,8 @@ document.getElementById('art-body').innerHTML = `
   </div>
 `;
   showPage('article');
+renderRelatedArticles(type, id);
+window.location.hash = 'article/' + type + '/' + id;
 }
 
 function handleSubmit(e) {
@@ -678,6 +680,42 @@ function copyLink() {
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied!");
 }
-</script>
-</body>
-</html>
+function renderRelatedArticles(type, currentId) {
+  const articles = type === 'biz' ? businessArticles : cricketArticles;
+
+  const related = articles.filter(a => a.id !== currentId).slice(0, 2);
+
+  const container = document.getElementById('related-articles');
+
+  if (!container) return;
+
+  if (!related.length) {
+    container.innerHTML = "<p>No related articles yet.</p>";
+    return;
+  }
+
+  container.innerHTML = related.map(a => `
+    <div style="border:1px solid #d6cebf; padding:1rem; margin-bottom:0.8rem; cursor:pointer;"
+      onclick="openArticle('${a.id}', '${type}')">
+      <strong>${a.title}</strong>
+      <p style="font-size:0.85rem; color:#6b6b6b;">${a.date}</p>
+    </div>
+  `).join('');
+}
+window.addEventListener('load', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash.startsWith('article/')) {
+    const parts = hash.split('/');
+    const type = parts[1];
+    const id = parts[2];
+    if (type && id) {
+      openArticle(id, type);
+      return;
+    }
+  }
+  if (hash === 'business' || hash === 'cricket' || hash === 'about' || hash === 'home') {
+    showPage(hash);
+    return;
+  }
+  showPage('home');
+});
