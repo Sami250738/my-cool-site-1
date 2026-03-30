@@ -607,7 +607,12 @@ function renderGrid(type, articles) {
     </div>`).join('');
 }
 
-function openArticle(id, type) {
+function openArticle(id, type, fromHash = false) {
+
+  // Only set hash if user clicked manually
+  if (!fromHash) {
+    window.location.hash = `article/${type}/${id}`;
+  }
   const isBiz = type === 'biz';
   const article = (isBiz ? businessArticles : cricketArticles).find(a => a.id === id);
   if (!article) return;
@@ -678,6 +683,27 @@ function copyLink() {
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied!");
 }
+function loadFromHash() {
+  const hash = window.location.hash;
+
+  if (hash.startsWith('#article/')) {
+    const parts = hash.replace('#article/', '').split('/');
+    const type = parts[0];
+    const id = parts[1];
+
+    openArticle(id, type, true);
+  }
+}
+
+// Run when page loads
+window.addEventListener('DOMContentLoaded', () => {
+  renderGrid('biz', businessArticles);
+  renderGrid('cric', cricketArticles);
+  loadFromHash();
+});
+
+// Run when hash changes
+window.addEventListener('hashchange', loadFromHash);
 </script>
 </body>
 </html>
