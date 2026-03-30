@@ -85,15 +85,15 @@
   .articles-section { padding: 60px 5% 90px; background: var(--cream); }
   .articles-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
   .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem; }
-  .article-card { background: #fff; border: 1px solid var(--border); padding: 1.6rem; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .article-card { background: #fff; border: 1px solid var(--border); padding: 0; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
   .article-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-  .article-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .article-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding: 0 1.6rem; }
   .article-tag { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 10px; font-family: 'Crimson Text', serif; font-weight: 600; }
   .article-tag.biz { background: rgba(184,149,42,0.12); color: #7a6015; }
   .article-tag.cric { background: rgba(26,77,46,0.1); color: var(--green); }
   .article-date { font-size: 0.82rem; color: var(--text-muted); }
   .article-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 600; color: var(--navy); line-height: 1.35; margin-bottom: 0.7rem; }
-  .article-excerpt { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .article-excerpt { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.2rem; padding: 0 1.6rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .read-more { font-size: 0.82rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
   .biz-card .read-more { color: var(--gold); }
   .cric-card .read-more { color: var(--green-light); }
@@ -509,6 +509,7 @@ const cricketArticles = [
     id: 'c1',
     title: 'Test Cricket in the T20 Era: Still Relevant, Still Supreme',
     date: 'March 2026',
+    image: 'hero.jpg',
     excerpt: 'T20 was supposed to kill Test cricket. Seventeen years after the IPL launch, the five-day format is faster, more watched and more compelling than at any point in its history. Here is the full story.',
     body: `<img src="hero.jpg" style="width:100%; margin:1.5rem 0; border-radius:4px;" alt="Lord's Cricket Ground">
 <p style="font-size:0.82rem; color:#6b6b6b; text-align:center; margin-top:-1rem; margin-bottom:2rem;"><em>Lord's Cricket Ground, London. The venue for the ICC World Test Championship Final and the spiritual home of the five-day game.</em></p>
@@ -597,13 +598,16 @@ function renderGrid(type, articles) {
   }
   grid.innerHTML = articles.map(a => `
     <div class="article-card ${isBiz ? 'biz-card' : 'cric-card'}" onclick="openArticle('${a.id}','${type}')">
-      <div class="article-card-top">
-        <span class="article-tag ${isBiz ? 'biz' : 'cric'}">${isBiz ? 'Business' : 'Cricket'}</span>
-        <span class="article-date">${a.date}</span>
+      ${a.image ? `<img src="${a.image}" alt="${a.title}" style="width:100%;height:190px;object-fit:cover;display:block;">` : ''}
+      <div style="padding:1.2rem 1.6rem 1.6rem;">
+        <div class="article-card-top">
+          <span class="article-tag ${isBiz ? 'biz' : 'cric'}">${isBiz ? 'Business' : 'Cricket'}</span>
+          <span class="article-date">${a.date}</span>
+        </div>
+        <div class="article-title">${a.title}</div>
+        <div class="article-excerpt">${a.excerpt}</div>
+        <div class="read-more">Read article →</div>
       </div>
-      <div class="article-title">${a.title}</div>
-      <div class="article-excerpt">${a.excerpt}</div>
-      <div class="read-more">Read article →</div>
     </div>`).join('');
 }
 
