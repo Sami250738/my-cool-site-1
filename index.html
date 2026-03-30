@@ -691,7 +691,7 @@ function loadFromHash() {
   showPage('home');
 }
 window.addEventListener('hashchange', loadFromHash);
-loadFromHash();
+if (window.location.hash) loadFromHash();
 </script>
 </body>
 </html>
