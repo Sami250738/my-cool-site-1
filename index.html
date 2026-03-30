@@ -243,7 +243,7 @@
         <div class="rule"></div>
         <p>Welcome to <em>Jayed Insights</em> — a content writing platform built on the belief that great writing can illuminate both the boardroom and the boundary rope.</p>
         <p>Whether you need sharp, authoritative content for your business brand or passionate, informed coverage of cricket's ever-unfolding narratives, this is where precision meets storytelling.</p>
-        <p>Every piece is crafted with research, clarity, and an authentic voice because good content is never generic.</p>
+        <p>Every piece is crafted with research, clarity, and an authentic voice — because good content is never generic.</p>
       </div>
       <div class="about-columns fade-in">
         <div class="about-card" onclick="showPage('business')">
@@ -650,8 +650,6 @@ document.getElementById('art-body').innerHTML = `
   </div>
 `;
   showPage('article');
-renderRelatedArticles(type, id);
-window.location.hash = 'article/' + type + '/' + id;
 }
 
 function handleSubmit(e) {
@@ -680,39 +678,6 @@ function copyLink() {
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied!");
 }
-function renderRelatedArticles(type, currentId) {
-  const articles = type === 'biz' ? businessArticles : cricketArticles;
-
-  const related = articles.filter(a => a.id !== currentId).slice(0, 2);
-
-  const container = document.getElementById('related-articles');
-
-  if (!container) return;
-
-  if (!related.length) {
-    container.innerHTML = "<p>No related articles yet.</p>";
-    return;
-  }
-
-  container.innerHTML = related.map(a => `
-    <div style="border:1px solid #d6cebf; padding:1rem; margin-bottom:0.8rem; cursor:pointer;"
-      onclick="openArticle('${a.id}', '${type}')">
-      <strong>${a.title}</strong>
-      <p style="font-size:0.85rem; color:#6b6b6b;">${a.date}</p>
-    </div>
-  `).join('');
-}
-window.addEventListener('load', () => {
-  const hash = window.location.hash;
-
-  if (hash.startsWith('#article/')) {
-    const parts = hash.replace('#article/', '').split('/');
-    const type = parts[0];
-    const id = parts[1];
-
-    openArticle(id, type);
-  }
-});
 </script>
 </body>
 </html>
