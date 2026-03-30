@@ -650,6 +650,8 @@ document.getElementById('art-body').innerHTML = `
   </div>
 `;
   showPage('article');
+renderRelatedArticles(type, id);
+window.location.hash = 'article/' + type + '/' + id;
 }
 
 function handleSubmit(e) {
@@ -677,6 +679,28 @@ function shareFacebook() {
 function copyLink() {
   navigator.clipboard.writeText(window.location.href);
   alert("Link copied!");
+}
+function renderRelatedArticles(type, currentId) {
+  const articles = type === 'biz' ? businessArticles : cricketArticles;
+
+  const related = articles.filter(a => a.id !== currentId).slice(0, 2);
+
+  const container = document.getElementById('related-articles');
+
+  if (!container) return;
+
+  if (!related.length) {
+    container.innerHTML = "<p>No related articles yet.</p>";
+    return;
+  }
+
+  container.innerHTML = related.map(a => `
+    <div style="border:1px solid #d6cebf; padding:1rem; margin-bottom:0.8rem; cursor:pointer;"
+      onclick="openArticle('${a.id}', '${type}')">
+      <strong>${a.title}</strong>
+      <p style="font-size:0.85rem; color:#6b6b6b;">${a.date}</p>
+    </div>
+  `).join('');
 }
 </script>
 </body>
