@@ -577,13 +577,20 @@ const cricketArticles = [
 
 let articleOrigin = 'business';
 
-function showPage(name) {
+function showPage(name, options = {}) {
+  const { updateHash = true } = options;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + name).classList.add('active');
   window.scrollTo(0, 0);
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active-nav'));
   const n = document.getElementById('nav-' + name);
   if (n) n.classList.add('active-nav');
+  if (updateHash && name !== 'article') {
+    const nextHash = name === 'home' ? '#home' : `#${name}`;
+    if (window.location.hash !== nextHash) {
+      window.location.hash = nextHash;
+    }
+  }
   if (name === 'business') renderGrid('biz', businessArticles);
   if (name === 'cricket') renderGrid('cric', cricketArticles);
 }
@@ -668,7 +675,7 @@ document.getElementById('art-body').innerHTML = `
     <div id="related-articles"></div>
   </div>
 `;
-  showPage('article');
+  showPage('article', { updateHash: false });
 }
 
 function handleSubmit(e) {
@@ -698,15 +705,19 @@ function copyLink() {
   alert("Link copied!");
 }
 function loadFromHash() {
-  const hash = window.location.hash;
+  const hash = window.location.hash.replace('#', '');
 
-  if (hash.startsWith('#article/')) {
-    const parts = hash.replace('#article/', '').split('/');
+  if (hash.startsWith('article/')) {
+    const parts = hash.replace('article/', '').split('/');
     const type = parts[0];
     const id = parts[1];
 
     openArticle(id, type, true);
+    return;
   }
+ const page = hash || 'home';
+  const validPages = ['home', 'business', 'cricket', 'about'];
+  showPage(validPages.includes(page) ? page : 'home', { updateHash: false });
 }
 
 // Run when page loads
