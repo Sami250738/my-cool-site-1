@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jayed Insights</title>
+ <meta property="og:title" content="Jayed Insights" />
+<meta property="og:description" content="Content writing at the intersection of business strategy and cricket." />
+<meta property="og:image" content="https://jayedinsight.me/og-image.png" />
+<meta property="og:url" content="https://jayedinsight.me" />
+<meta property="og:type" content="website" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -509,7 +514,7 @@ const cricketArticles = [
     id: 'c1',
     title: 'Test Cricket in the T20 Era: Still Relevant, Still Supreme',
     date: 'March 2026',
-    image: 'hero.jpg',
+    image: 'https://jayedinsight.me/hero.jpg',
     excerpt: 'T20 was supposed to kill Test cricket. Seventeen years after the IPL launch, the five-day format is faster, more watched and more compelling than at any point in its history. Here is the full story.',
     body: `<img src="hero.jpg" style="width:100%; margin:1.5rem 0; border-radius:4px;" alt="Lord's Cricket Ground">
 <p style="font-size:0.82rem; color:#6b6b6b; text-align:center; margin-top:-1rem; margin-bottom:2rem;"><em>Lord's Cricket Ground, London. The venue for the ICC World Test Championship Final and the spiritual home of the five-day game.</em></p>
@@ -620,6 +625,11 @@ function openArticle(id, type, fromHash = false) {
   const isBiz = type === 'biz';
   const article = (isBiz ? businessArticles : cricketArticles).find(a => a.id === id);
   if (!article) return;
+ // Update OG meta tags for social sharing
+document.querySelector('meta[property="og:title"]').setAttribute('content', article.title);
+document.querySelector('meta[property="og:image"]').setAttribute('content', article.image || 'https://jayedinsight.me/og-image.png');
+document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://jayedinsight.me/#article/' + type + '/' + article.id);
+document.title = article.title + ' | Jayed Insights';
   articleOrigin = isBiz ? 'business' : 'cricket';
   document.getElementById('art-header').className = 'page-header ' + (isBiz ? 'biz-header' : 'cric-header');
   document.getElementById('art-back').onclick = () => showPage(articleOrigin);
