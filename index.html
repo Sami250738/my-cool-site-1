@@ -6,7 +6,7 @@
 <title>Jayed Insights</title>
  <meta property="og:title" content="Jayed Insights" />
 <meta property="og:description" content="Content writing at the intersection of business strategy and cricket." />
-<meta property="og:image" content="https://jayedinsight.me/og-image.png" />
+<meta property="og:image" content="https://jayedinsight.me/hero.jpg" />
 <meta property="og:url" content="https://jayedinsight.me" />
 <meta property="og:type" content="website" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
@@ -356,7 +356,7 @@
   <div class="about-me-header">
     <div class="about-me-header-inner">
      <div class="about-me-photo-wrap">
-  <img src="profile.jpg" class="about-me-photo" alt="Md. Abu Jayed">
+  <img src="profile.jpg" class="about-me-photo" alt="">
   <div class="about-me-badge">Content Writer</div>
 </div>
       <div class="about-me-intro">
@@ -627,7 +627,7 @@ function openArticle(id, type, fromHash = false) {
   if (!article) return;
  // Update OG meta tags for social sharing
 document.querySelector('meta[property="og:title"]').setAttribute('content', article.title);
-document.querySelector('meta[property="og:image"]').setAttribute('content', article.image || 'https://jayedinsight.me/og-image.png');
+document.querySelector('meta[property="og:image"]').setAttribute('content', article.image || 'https://jayedinsight.me/hero.jpg');
 document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://jayedinsight.me/#article/' + type + '/' + article.id);
 document.title = article.title + ' | Jayed Insights';
   articleOrigin = isBiz ? 'business' : 'cricket';
