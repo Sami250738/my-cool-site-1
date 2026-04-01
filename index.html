@@ -7,6 +7,7 @@
  <meta name="description" content="Content writing at the intersection of business strategy and cricket." />
 <meta property="og:title" content="Jayed Insights" />
 <meta property="og:description" content="Content writing at the intersection of business strategy and cricket." />
+ <meta property="og:image" content="https://jayedinsight.me/og-image.png" />
 <meta name="description" content="Content writing at the intersection of business strategy and cricket." />
 <meta property="og:title" content="Jayed Insights" />
 <meta property="og:url" content="https://jayedinsight.me" />
@@ -680,6 +681,7 @@ let articleOrigin = 'business';
 };
 
 function setDefaultMetaTags() {
+ ensureMetaTag('meta[property="og:image"]', 'property', 'og:image', siteDefaults.image);
   document.title = siteDefaults.title;
   document.querySelector('meta[name="description"]').setAttribute('content', siteDefaults.description);
   document.querySelector('meta[property="og:title"]').setAttribute('content', siteDefaults.title);
@@ -690,7 +692,16 @@ function setDefaultMetaTags() {
   document.querySelector('meta[name="twitter:description"]').setAttribute('content', siteDefaults.description);
   document.querySelector('meta[name="twitter:image"]').setAttribute('content', siteDefaults.image);
 }
-
+ 
+function ensureMetaTag(selector, attrName, attrValue, content) {
+  let meta = document.querySelector(selector);
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.setAttribute(attrName, attrValue);
+    document.head.appendChild(meta);
+  }
+  meta.setAttribute('content', content);
+}
 function showPage(name, options = {}) {
   const { updateHash = true } = options;
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
