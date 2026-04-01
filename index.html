@@ -4,11 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jayed Insights</title>
- <meta property="og:title" content="Jayed Insights" />
+ <meta name="description" content="Content writing at the intersection of business strategy and cricket." />
+<meta property="og:title" content="Jayed Insights" />
 <meta property="og:description" content="Content writing at the intersection of business strategy and cricket." />
-<meta property="og:image" content="https://jayedinsight.me/hero.jpg" />
+<meta name="description" content="Content writing at the intersection of business strategy and cricket." />
+<meta property="og:title" content="Jayed Insights" />
 <meta property="og:url" content="https://jayedinsight.me" />
 <meta property="og:type" content="website" />
+ <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Jayed Insights" />
+<meta name="twitter:description" content="Content writing at the intersection of business strategy and cricket." />
+<meta name="twitter:image" content="https://jayedinsight.me/og-image.png" />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -666,6 +672,24 @@ const cricketArticles = [
 ];
 
 let articleOrigin = 'business';
+ const siteDefaults = {
+  title: 'Jayed Insights',
+  description: 'Content writing at the intersection of business strategy and cricket.',
+  image: 'https://jayedinsight.me/og-image.png',
+  url: 'https://jayedinsight.me'
+};
+
+function setDefaultMetaTags() {
+  document.title = siteDefaults.title;
+  document.querySelector('meta[name="description"]').setAttribute('content', siteDefaults.description);
+  document.querySelector('meta[property="og:title"]').setAttribute('content', siteDefaults.title);
+  document.querySelector('meta[property="og:description"]').setAttribute('content', siteDefaults.description);
+  document.querySelector('meta[property="og:image"]').setAttribute('content', siteDefaults.image);
+  document.querySelector('meta[property="og:url"]').setAttribute('content', siteDefaults.url);
+  document.querySelector('meta[name="twitter:title"]').setAttribute('content', siteDefaults.title);
+  document.querySelector('meta[name="twitter:description"]').setAttribute('content', siteDefaults.description);
+  document.querySelector('meta[name="twitter:image"]').setAttribute('content', siteDefaults.image);
+}
 
 function showPage(name, options = {}) {
   const { updateHash = true } = options;
@@ -681,6 +705,7 @@ function showPage(name, options = {}) {
       window.location.hash = nextHash;
     }
   }
+ if (name !== 'article') setDefaultMetaTags();
   if (name === 'business') renderGrid('biz', businessArticles);
   if (name === 'cricket') renderGrid('cric', cricketArticles);
 }
@@ -722,11 +747,18 @@ function openArticle(id, type, fromHash = false) {
   const isBiz = type === 'biz';
   const article = (isBiz ? businessArticles : cricketArticles).find(a => a.id === id);
   if (!article) return;
- // Update OG meta tags for social sharing
-document.querySelector('meta[property="og:title"]').setAttribute('content', article.title);
-document.querySelector('meta[property="og:image"]').setAttribute('content', article.image || 'https://jayedinsight.me/hero.jpg');
-document.querySelector('meta[property="og:url"]').setAttribute('content', 'https://jayedinsight.me/#article/' + type + '/' + article.id);
-document.title = article.title + ' | Jayed Insights';
+  // Update social sharing meta tags
+  const pageUrl = 'https://jayedinsight.me/#article/' + type + '/' + article.id;
+  const shareImage = article.image || 'https://jayedinsight.me/og-image.png';
+  const shareDescription = article.excerpt || 'Content writing at the intersection of business strategy and cricket.';
+  document.querySelector('meta[property="og:title"]').setAttribute('content', article.title);
+  document.querySelector('meta[property="og:description"]').setAttribute('content', shareDescription);
+  document.querySelector('meta[property="og:image"]').setAttribute('content', shareImage);
+  document.querySelector('meta[property="og:url"]').setAttribute('content', pageUrl);
+  document.querySelector('meta[name="twitter:title"]').setAttribute('content', article.title);
+  document.querySelector('meta[name="twitter:description"]').setAttribute('content', shareDescription);
+  document.querySelector('meta[name="twitter:image"]').setAttribute('content', shareImage);
+  document.title = article.title + ' | Jayed Insights';
   articleOrigin = isBiz ? 'business' : 'cricket';
   document.getElementById('art-header').className = 'page-header ' + (isBiz ? 'biz-header' : 'cric-header');
   document.getElementById('art-back').onclick = () => showPage(articleOrigin);
