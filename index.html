@@ -184,6 +184,9 @@
   .extra-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.2rem; flex-wrap: wrap; }
   .extra-role { font-family: 'Playfair Display', serif; font-size: 0.92rem; font-weight: 600; color: var(--navy); }
   .extra-org { font-size: 0.85rem; color: var(--green-light); font-style: italic; margin-bottom: 0.3rem; }
+  .cert-link { color: var(--navy); text-decoration: none; border-bottom: 1px dashed var(--gold); }
+  .cert-link:hover { color: var(--gold); }
+  .portfolio-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.4rem; }
   @media (max-width: 800px) {
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .hero-sections { flex-direction: column; align-items: center; }
@@ -208,7 +211,7 @@
     <li><button id="nav-home" onclick="showPage('home')">Home</button></li>
     <li><button id="nav-business" onclick="showPage('business')">Business</button></li>
     <li><button id="nav-cricket" onclick="showPage('cricket')">Cricket</button></li>
-    <li><button id="nav-about" onclick="showPage('about')">About</button></li>
+  <li><button id="nav-about" onclick="showPage('about')">Portfolio</button></li>
     <li><button onclick="gotoContact()">Contact</button></li>
   </ul>
 </nav>
@@ -245,12 +248,12 @@
   <section class="about-section">
     <div class="about-grid">
       <div class="about-text fade-in">
-        <p class="section-label">About</p>
-        <h2 class="section-title">Two passions.<br>One voice.</h2>
+        <p class="section-label">Portfolio</p>
+        <h2 class="section-title">Previous work,<br>certificates &amp; highlights.</h2>
         <div class="rule"></div>
-        <p>Welcome to <em>Jayed Insights</em> — a content writing platform built on the belief that great writing can illuminate both the boardroom and the boundary rope.</p>
-        <p>Whether you need sharp, authoritative content for your business brand or passionate, informed coverage of cricket's ever-unfolding narratives, this is where precision meets storytelling.</p>
-        <p>Every piece is crafted with research, clarity, and an authentic voice — because good content is never generic.</p>
+        <p>Welcome to my portfolio section. Here you will find selected work projects, professional certificates, and other career achievements.</p>
+        <p>This section will grow over time as I add more project case studies, credentials, and supporting links.</p>
+        <p>Use the Portfolio page to view detailed records in one place.</p>
       </div>
       <div class="about-columns fade-in">
         <div class="about-card" onclick="showPage('business')">
@@ -362,10 +365,10 @@
   <div class="about-me-badge">Content Writer</div>
 </div>
       <div class="about-me-intro">
-        <p class="page-eyebrow">About Me</p>
+        <p class="page-eyebrow">Portfolio</p>
         <h1>Md. Abu Jayed</h1>
-        <p class="about-title">Business &amp; Cricket Content Writer · Marketing Professional</p>
-        <p class="bio">Business graduate with hands-on experience in sales execution, lead generation, merchant onboarding, and marketing. Proven track record of achieving BDT 700k sales within three months and building structured lead-to-client systems generating consistent monthly conversions. Strong interest in marketing and sales.</p>
+       <p class="about-title">Previous Work · Certificates · Achievements</p>
+        <p class="bio">Welcome to my portfolio. This section highlights my previous work projects, verified certificates, and key achievements. I will keep adding more projects, certificates, and professional milestones over time.</p>
         <div class="about-me-contacts">
           <a href="mailto:abujahedsami@gmail.com" class="about-contact-pill">✉ abujahedsami@gmail.com</a>
           <a href="tel:+8801885317799" class="about-contact-pill">📞 +880 1885 317799</a>
@@ -378,9 +381,9 @@
     <div class="about-me-body-inner">
       <div class="about-me-grid">
         <div>
-          <div class="about-block-title">Work Experience</div>
+          <div class="about-block-title">Previous Work Projects</div>
           <div class="exp-item">
-            <div class="exp-top"><div class="exp-role">Sales Intern</div><div class="exp-date">Sep 2025 – Nov 2025</div></div>
+            <div class="exp-top"><div class="exp-role">Sales Intern Project Portfolio</div><div class="exp-date">Sep 2025 – Nov 2025</div></div>
             <div class="exp-company">Brand Craftar</div>
             <ul class="exp-bullets">
               <li>Conducted business &amp; market analysis for 2 client companies on branding strategies</li>
@@ -389,7 +392,7 @@
             </ul>
           </div>
           <div class="exp-item">
-            <div class="exp-top"><div class="exp-role">Marketing Intern</div><div class="exp-date">Jun 2025 – Oct 2025</div></div>
+            <div class="exp-top"><div class="exp-role">Marketing Campaign Project Portfolio</div><div class="exp-date">Jun 2025 – Oct 2025</div></div>
             <div class="exp-company">Pacific Asia Travel Association (PATA)</div>
             <ul class="exp-bullets">
               <li>Communicated with Airbnb &amp; BBC stakeholders regarding PTM 2025</li>
@@ -398,7 +401,7 @@
             </ul>
           </div>
           <div class="exp-item">
-            <div class="exp-top"><div class="exp-role">Branding &amp; Marketing Executive</div><div class="exp-date">Mar 2024 – Aug 2024</div></div>
+            <div class="exp-top"><div class="exp-role">Branding &amp; Marketing Growth Project</div><div class="exp-date">Mar 2024 – Aug 2024</div></div>
             <div class="exp-company">Data Solution 360 (Part-time)</div>
             <ul class="exp-bullets">
               <li>Built partnerships with 30+ university organisations through MOU signings</li>
@@ -407,7 +410,7 @@
             </ul>
           </div>
           <div class="exp-item">
-            <div class="exp-top"><div class="exp-role">Deputy Head of Corporate Affairs</div><div class="exp-date">Aug 2023 – Sep 2023</div></div>
+            <div class="exp-top"><div class="exp-role">Corporate Sponsorship Project</div><div class="exp-date">Aug 2023 – Sep 2023</div></div>
             <div class="exp-company">Greenaugurate Event</div>
             <ul class="exp-bullets">
               <li>Secured BDT 500,000 through sponsorship proposals to corporate partners</li>
@@ -416,31 +419,38 @@
           </div>
         </div>
         <div>
-          <div class="about-block-title">Education</div>
+          <div class="about-block-title">Certificates</div>
           <div class="edu-item">
-            <div class="edu-degree">BBA in Tourism &amp; Hospitality Management</div>
-            <div class="edu-uni">University of Dhaka</div>
-            <div class="edu-meta">CGPA: 3.40 &nbsp;·&nbsp; Feb 2022 – Jan 2026</div>
+           <div class="edu-degree">LOOKUP Function in Excel</div>
+            <div class="edu-uni">Simplilearn SkillUp</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI0MjQwIiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvOTU3MTc3Ml84NjI0NzcxMTc2NTQ3NzU5MDI2OC5wbmciLCJ1c2VybmFtZSI6Ik1kLiBBYnUgSmF5ZWQifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F7218%2FLOOKUP-Function-in-Excel%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1568244763186556242&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FV94wwzgt1r0wyjEyyrytKTUstKsrMS49PKsovL04tsvUBqkpN8cwDAAqgAwpBAAAA">View Certificate →</a></div>
           </div>
-          <div class="about-block-title" style="margin-top:2rem;">Skills</div>
-          <div class="skills-group">
-            <div class="skills-group-label">Technical</div>
-            <div class="skills-pills">
-              <span class="skill-pill gold">Graphic Design</span><span class="skill-pill gold">Canva</span><span class="skill-pill gold">Power BI</span><span class="skill-pill">MS Excel</span><span class="skill-pill">PowerPoint</span><span class="skill-pill">Asana</span><span class="skill-pill">Google Workspace</span>
+<div class="edu-item">
+            <div class="edu-degree">Career Essentials in Data Analysis</div>
+            <div class="edu-uni">Microsoft and LinkedIn</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/learning/certificates/56fd8aa3e597cbfa2a5e7dc71de58b97a72b2a31f8534f8826b378583b35c106/">View Certificate →</a></div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Excel Skills for Business: Essentials</div>
+            <div class="edu-uni">Coursera</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://www.coursera.org/account/accomplishments/certificate/BBXYS5PL6FPP">View Certificate →</a></div>
             </div>
+           <div class="edu-item">
+            <div class="edu-degree">Financial Accounting and Capital Markets (Verified Certificate)</div>
+            <div class="edu-uni">edX</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://courses.edx.org/certificates/11ac97e1071d4530aa5709b7c2941598">View Certificate →</a></div>
           </div>
-          <div class="skills-group">
-            <div class="skills-group-label">Soft Skills</div>
-            <div class="skills-pills">
-              <span class="skill-pill">Project Management</span><span class="skill-pill">Lead Management</span><span class="skill-pill">Market Research</span><span class="skill-pill">Stakeholder Management</span><span class="skill-pill">Event Management</span><span class="skill-pill">Critical Thinking</span>
-            </div>
+          <div class="edu-item">
+            <div class="edu-degree">Foundations of Project Management</div>
+            <div class="edu-uni">Coursera</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://www.coursera.org/account/accomplishments/certificate/Y2G8QPR2HNK9">View Certificate →</a></div>
           </div>
-          <div class="skills-group">
-            <div class="skills-group-label">Interests</div>
-            <div class="skills-pills">
-              <span class="skill-pill gold">Cricket</span><span class="skill-pill gold">Branding</span><span class="skill-pill gold">Marketing</span><span class="skill-pill">Astronomy</span><span class="skill-pill">Football</span><span class="skill-pill">Movies</span>
-            </div>
+          <div class="edu-item">
+            <div class="edu-degree">Online Leadership Course (Aspire Leaders Programme)</div>
+            <div class="edu-uni">Aspire Leaders Programme</div>
+            <div class="edu-meta"><a class="cert-link" target="_blank" rel="noopener noreferrer" href="https://drive.google.com/file/d/1ScLa_puQ7Tn1EwBmriyeS3sQCLzz8h2j/view?usp=drivesdk">View Certificate →</a></div>
           </div>
+         <p class="portfolio-note">More certificates and supporting documents will be added soon.</p>
         </div>
       </div>
       <div class="about-me-grid">
