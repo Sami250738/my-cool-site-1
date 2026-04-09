@@ -132,6 +132,18 @@
   .submit-btn { align-self: flex-start; padding: 0.75rem 2.4rem; background: var(--navy); color: var(--gold-light); border: none; font-family: 'Crimson Text', serif; font-size: 1rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; border-radius: 2px; }
   .submit-btn:hover { background: var(--navy-light); }
   .contact-note { margin-top: 1.2rem; font-style: italic; font-size: 0.9rem; color: var(--text-muted); text-align: center; }
+
+   .home-cta-section { padding: 90px 5%; background: var(--cream); border-top: 1px solid var(--border); }
+  .home-cta-inner { max-width: 1100px; margin: 0 auto; }
+  .home-cta-top { text-align: center; margin-bottom: 2.2rem; }
+  .home-cta-top p { color: var(--text-muted); max-width: 660px; margin: 0.8rem auto 0; }
+  .home-cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .home-cta-card { background: #fff; border: 1px solid var(--border); padding: 1.1rem 1.1rem; }
+  .home-cta-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); margin-bottom: 0.45rem; }
+  .home-cta-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.55; }
+  .home-contact-bar { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; justify-content: center; background: var(--cream-dark); border: 1px solid var(--border); padding: 1rem; }
+  .home-contact-pill { display: inline-flex; align-items: center; gap: 6px; padding: 0.45rem 0.9rem; border: 1px solid var(--border); background: #fff; text-decoration: none; color: var(--navy); font-size: 0.9rem; }
+  .home-contact-pill:hover { border-color: var(--gold); color: #7a6015; }
   footer { background: var(--navy); border-top: 2px solid var(--gold); padding: 2.5rem 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
   .footer-brand { font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.1rem; font-weight: 600; }
   .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.85rem; }
@@ -296,6 +308,40 @@
       <p class="contact-note">Typically responds within 24 hours.</p>
     </div>
   </section>
+
+ <section class="home-cta-section">
+    <div class="home-cta-inner fade-in">
+      <div class="home-cta-top">
+        <p class="section-label">Why work with me</p>
+        <h2 class="section-title">A professional close to the homepage</h2>
+        <div class="rule" style="margin:1rem auto 1.2rem;"></div>
+        <p>This section can stay as your final homepage block to avoid empty space and quickly direct visitors to your work, services, and contact details.</p>
+      </div>
+      <div class="home-cta-grid">
+        <article class="home-cta-card">
+          <h3>Services Snapshot</h3>
+          <p>Business articles, cricket features, campaign copy, and strategy-focused writing in one place.</p>
+        </article>
+        <article class="home-cta-card">
+          <h3>Availability</h3>
+          <p>Open to freelance projects, internships, collaborations, and guest writing opportunities.</p>
+        </article>
+        <article class="home-cta-card">
+          <h3>Response Time</h3>
+          <p>Usually replies within 24 hours so clients can move quickly from idea to execution.</p>
+        </article>
+        <article class="home-cta-card">
+          <h3>Quick Links</h3>
+          <p>Guide readers to your Portfolio, latest Business post, and newest Cricket analysis.</p>
+        </article>
+      </div>
+      <div class="home-contact-bar">
+        <a class="home-contact-pill" href="mailto:abujahedsami@gmail.com">✉ abujahedsami@gmail.com</a>
+        <a class="home-contact-pill" href="https://www.linkedin.com/in/abu-jayed-sami-055bb8221/" target="_blank" rel="noopener noreferrer">LinkedIn Profile ↗</a>
+      </div>
+    </div>
+  </section>
+ 
   <footer><div class="footer-brand">Jayed Insights</div><div class="footer-copy">&copy; 2026 Jayed Insights. All rights reserved.</div></footer>
 </div>
 
