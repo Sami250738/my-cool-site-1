@@ -38,30 +38,29 @@
   .nav-links button { background: none; border: none; cursor: pointer; color: #c9c4b8; font-family: 'Crimson Text', serif; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; padding: 0; }
   .nav-links button:hover, .nav-links button.active-nav { color: var(--gold-light); }
   .nav-links button.active-nav { border-bottom: 1.5px solid var(--gold-light); padding-bottom: 2px; }
-  .hero { min-height: 100vh; background: var(--navy); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 100px 5% 60px; position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 108px 5% 60px; position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(184,149,42,0.06) 59px, rgba(184,149,42,0.06) 60px), repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(184,149,42,0.06) 79px, rgba(184,149,42,0.06) 80px); pointer-events: none; }
-  .hero-eyebrow { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
-  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 7vw, 5.2rem); font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 0.4rem; }
+  .hero-inner { width: 100%; max-width: 1150px; position: relative; z-index: 1; }
+  .hero-hello { width: fit-content; margin: 0 auto 1rem; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.18); color: #fff; padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.95rem; font-weight: 600; font-family: 'Crimson Text', serif; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.7rem, 8vw, 5.5rem); font-weight: 700; color: #fff; line-height: 1.04; text-align: center; margin-bottom: 2rem; }
   .hero h1 span { color: var(--gold-light); }
-  .hero-divider { width: 60px; height: 2px; background: var(--gold); margin: 1.4rem auto; }
-  .hero-tagline { font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.3rem; color: #a9a49a; max-width: 540px; margin-bottom: 2.8rem; }
-  .hero-sections { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-  .section-card { width: 220px; padding: 1.8rem 1.5rem; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.1); transition: transform 0.25s, background 0.25s; text-align: left; background: rgba(255,255,255,0.04); }
-  .section-card:hover { transform: translateY(-4px); }
-  .section-card.biz { border-top: 3px solid var(--gold); }
-  .section-card.biz:hover { background: rgba(184,149,42,0.1); }
-  .section-card.cric { border-top: 3px solid #4caf50; }
-  .section-card.cric:hover { background: rgba(76,175,80,0.1); }
-  .card-icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
-  .card-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .section-card.biz .card-label { color: var(--gold); }
-  .section-card.cric .card-label { color: #81c784; }
-  .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; font-weight: 600; margin-bottom: 0.5rem; }
-  .card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 1rem; }
-  .card-arrow { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
-  .section-card.biz .card-arrow { color: var(--gold-light); }
-  .section-card.cric .card-arrow { color: #81c784; }
-  .hero-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .hero-grid { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(280px, 1.1fr) minmax(220px, 1fr); align-items: center; gap: 2rem; }
+  .hero-name-vertical { position: absolute; left: -8px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: left top; font-family: 'Playfair Display', serif; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(184,149,42,0.22); font-size: clamp(1.8rem, 3.8vw, 3.2rem); pointer-events: none; }
+  .hero-quote { color: rgba(255,255,255,0.9); max-width: 300px; }
+  .hero-quote-mark { font-size: 3rem; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; }
+  .hero-quote p { font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.25rem; line-height: 1.6; color: #ddd8cc; }
+  .hero-quote-author { margin-top: 1rem; font-size: 1rem; color: rgba(255,255,255,0.78); }
+  .hero-photo-wrap { position: relative; width: min(100%, 360px); margin: 0 auto; }
+  .hero-blob { position: absolute; inset: 12% 7% 9%; background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold)); border-radius: 52% 48% 45% 55% / 45% 57% 43% 55%; opacity: 0.95; }
+  .hero-photo { position: relative; width: 100%; display: block; object-fit: cover; border-radius: 16px; }
+  .hero-actions { display: flex; flex-direction: column; gap: 1.1rem; align-items: stretch; }
+  .hero-btn { border: none; border-radius: 999px; padding: 0.95rem 1.5rem; font-family: 'Crimson Text', serif; font-size: 1.05rem; letter-spacing: 0.04em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s; }
+  .hero-btn:hover { transform: translateY(-2px); }
+  .hero-btn-primary { background: var(--gold); color: var(--navy); box-shadow: 0 8px 22px rgba(0,0,0,0.2); }
+  .hero-btn-primary:hover { background: var(--gold-light); }
+  .hero-btn-secondary { background: transparent; color: var(--gold-light); border: 1.5px solid var(--gold); }
+  .hero-btn-secondary:hover { background: rgba(184,149,42,0.12); }
+  .hero-scroll { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1; }
   .scroll-arrow { width: 14px; height: 14px; border-right: 1.5px solid rgba(255,255,255,0.25); border-bottom: 1.5px solid rgba(255,255,255,0.25); transform: rotate(45deg); animation: bounce 1.6s ease-in-out infinite; }
   @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
   .about-section { padding: 90px 5%; background: var(--cream); }
@@ -207,8 +206,13 @@
   .portfolio-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.4rem; }
   @media (max-width: 800px) {
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-sections { flex-direction: column; align-items: center; }
-    .section-card { width: 100%; max-width: 300px; }
+    .hero { padding-top: 94px; }
+    .hero h1 { margin-bottom: 1.2rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 1.4rem; text-align: center; }
+    .hero-name-vertical { display: none; }
+    .hero-quote { max-width: 560px; margin: 0 auto; }
+    .hero-actions { width: 100%; max-width: 320px; margin: 0 auto; }
+    .hero-photo-wrap { width: min(100%, 290px); }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; }
     .about-me-header-inner { grid-template-columns: 1fr; text-align: center; }
@@ -218,7 +222,12 @@
     .about-me-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-me-badge { right: auto; left: 50%; transform: translateX(-50%); }
   }
-  @media (max-width: 520px) { .nav-links { display: none; } }
+  @media (max-width: 520px) {
+    .nav-links { display: none; }
+    .hero-hello { font-size: 0.85rem; }
+    .hero h1 { font-size: clamp(2.2rem, 10vw, 3rem); }
+    .hero-quote p { font-size: 1.1rem; }
+  }
 </style>
 </head>
 <body>
@@ -237,24 +246,24 @@
 <!-- HOME -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <p class="hero-eyebrow">Words that inform &amp; inspire</p>
-    <h1>Jayed <span>Insights</span></h1>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">Content writing at the intersection of business strategy and the beautiful game of cricket.</p>
-    <div class="hero-sections">
-      <div class="section-card biz" onclick="showPage('business')">
-        <div class="card-icon">📊</div>
-        <div class="card-label">Writing</div>
-        <div class="card-title">Business</div>
-        <div class="card-desc">Thought leadership, brand copy, market analysis &amp; more.</div>
-        <div class="card-arrow">Read articles →</div>
-      </div>
-      <div class="section-card cric" onclick="showPage('cricket')">
-        <div class="card-icon">🏏</div>
-        <div class="card-label">Writing</div>
-        <div class="card-title">Cricket</div>
-        <div class="card-desc">Match reports, player profiles, tactics &amp; cricket culture.</div>
-        <div class="card-arrow">Read articles →</div>
+    <div class="hero-inner">
+      <div class="hero-name-vertical">MD ABU JAYED SAMI</div>
+      <p class="hero-hello">👋 Hello!</p>
+      <h1>Turning Ideas Into <span>Insights</span><br>for Business &amp; Cricket</h1>
+      <div class="hero-grid">
+        <div class="hero-quote">
+          <div class="hero-quote-mark">“</div>
+          <p>Smart stories, market clarity, and cricket intelligence—all crafted to inform and inspire every reader.</p>
+          <div class="hero-quote-author">— Jayed Insights</div>
+        </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-blob"></div>
+          <img src="profile2.jpg" alt="Md Abu Jayed Sami" class="hero-photo">
+        </div>
+        <div class="hero-actions">
+          <button class="hero-btn hero-btn-primary" onclick="showPage('business')">Business Insights</button>
+          <button class="hero-btn hero-btn-secondary" onclick="showPage('cricket')">Cricket Analysis</button>
+        </div>
       </div>
     </div>
     <div class="hero-scroll">
