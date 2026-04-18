@@ -299,8 +299,8 @@
           <button class="dynamic-link" id="dynamic-open">Open Section</button>
         </article>
         <aside class="dynamic-actions">
-          <button class="dynamic-action biz" onclick="showPage('business')">Go to Business Articles →</button>
-          <button class="dynamic-action cric" onclick="showPage('cricket')">Go to Cricket Articles →</button>
+          <button class="dynamic-action biz" id="dynamic-business-btn">Go to Business Articles →</button>
+          <button class="dynamic-action cric" id="dynamic-cricket-btn">Go to Cricket Articles →</button>
           <div class="dynamic-stats">
             <div><strong id="dynamic-biz-count">0</strong> Business posts</div>
             <div><strong id="dynamic-cric-count">0</strong> Cricket posts</div>
@@ -919,20 +919,24 @@ function initHomeDynamic() {
   const title = document.getElementById('dynamic-title');
   const excerpt = document.getElementById('dynamic-excerpt');
   const openBtn = document.getElementById('dynamic-open');
+  const businessBtn = document.getElementById('dynamic-business-btn');
+  const cricketBtn = document.getElementById('dynamic-cricket-btn');
 
-  if (!clockEl || !bizCountEl || !cricCountEl || !highlight || !badge || !title || !excerpt || !openBtn) return;
+  if (!clockEl || !bizCountEl || !cricCountEl || !highlight || !badge || !title || !excerpt || !openBtn || !businessBtn || !cricketBtn) return;
 
   bizCountEl.textContent = String(businessArticles.length);
   cricCountEl.textContent = String(cricketArticles.length);
+  businessBtn.onclick = () => showPage('business');
+  cricketBtn.onclick = () => showPage('cricket');
 
   const highlights = [];
   if (businessArticles.length) {
-    const lastBusinessArticle = businessArticles[businessArticles.length - 1];
-    highlights.push({ type: 'biz', title: lastBusinessArticle.title, excerpt: lastBusinessArticle.excerpt, page: 'business' });
+    const latestBusinessArticle = businessArticles[businessArticles.length - 1];
+    highlights.push({ type: 'biz', title: latestBusinessArticle.title, excerpt: latestBusinessArticle.excerpt, page: 'business' });
   }
   if (cricketArticles.length) {
-    const lastCricketArticle = cricketArticles[cricketArticles.length - 1];
-    highlights.push({ type: 'cric', title: lastCricketArticle.title, excerpt: lastCricketArticle.excerpt, page: 'cricket' });
+    const latestCricketArticle = cricketArticles[cricketArticles.length - 1];
+    highlights.push({ type: 'cric', title: latestCricketArticle.title, excerpt: latestCricketArticle.excerpt, page: 'cricket' });
   }
 
   function renderHighlight(item) {
