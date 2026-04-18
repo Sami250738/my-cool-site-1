@@ -908,8 +908,11 @@ const cricketArticles = [
 
 let homeDynamicInitialized = false;
 
+// Update clock once per minute for low-overhead live time display.
 const CLOCK_UPDATE_INTERVAL_MS = 60000;
+// Rotate highlights fast enough to feel dynamic without distracting readers.
 const HIGHLIGHT_ROTATION_INTERVAL_MS = 4500;
+const LIVE_CLOCK_SUFFIX = ' • Live';
 
 function parseArticleDateValue(dateText) {
   const parsedDate = Date.parse(dateText);
@@ -992,7 +995,7 @@ function initHomeDynamic() {
       day: 'numeric',
       hour: 'numeric',
       minute: '2-digit'
-    }) + ' • Live';
+    }) + LIVE_CLOCK_SUFFIX;
   }
 
   if (highlights.length) {
@@ -1001,6 +1004,7 @@ function initHomeDynamic() {
 
   function startDynamicTimers() {
     stopDynamicTimers();
+    updateClock();
     clockTimer = setInterval(updateClock, CLOCK_UPDATE_INTERVAL_MS);
     if (highlights.length > 1) {
       rotateTimer = setInterval(() => {
