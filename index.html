@@ -916,7 +916,7 @@ const LIVE_CLOCK_SUFFIX = ' • Live';
 
 function parseArticleDateToTimestamp(dateText) {
   const parsedDate = Date.parse(dateText);
-  return Number.isNaN(parsedDate) ? null : parsedDate;
+  return isNaN(parsedDate) ? null : parsedDate;
 }
 
 function getMostRecentArticle(articles) {
@@ -1025,7 +1025,6 @@ function initHomeDynamic() {
 
   document.addEventListener('visibilitychange', syncDynamicTimers);
   window.addEventListener('hashchange', syncDynamicTimers);
-  updateClock();
   syncDynamicTimers();
 }
 
