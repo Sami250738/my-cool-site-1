@@ -906,7 +906,7 @@ const cricketArticles = [
   }
 ];
 
-let homeDynamicInitialized = false;
+let isHomeDynamicInitialized = false;
 
 // Update clock once per minute for low-overhead live time display.
 const CLOCK_UPDATE_INTERVAL_MS = 60000;
@@ -914,7 +914,7 @@ const CLOCK_UPDATE_INTERVAL_MS = 60000;
 const HIGHLIGHT_ROTATION_INTERVAL_MS = 4500;
 const LIVE_CLOCK_SUFFIX = ' • Live';
 
-function parseArticleDateValue(dateText) {
+function parseArticleDateToTimestamp(dateText) {
   const parsedDate = Date.parse(dateText);
   return Number.isNaN(parsedDate) ? null : parsedDate;
 }
@@ -922,16 +922,16 @@ function parseArticleDateValue(dateText) {
 function getMostRecentArticle(articles) {
   return articles.reduce((latest, current) => {
     if (!latest) return current;
-    const latestDate = parseArticleDateValue(latest.date);
-    const currentDate = parseArticleDateValue(current.date);
+    const latestDate = parseArticleDateToTimestamp(latest.date);
+    const currentDate = parseArticleDateToTimestamp(current.date);
     if (currentDate !== null && (latestDate === null || currentDate > latestDate)) return current;
     return latest;
   }, null);
 }
 
 function initHomeDynamic() {
-  if (homeDynamicInitialized) return;
-  homeDynamicInitialized = true;
+  if (isHomeDynamicInitialized) return;
+  isHomeDynamicInitialized = true;
   const clockEl = document.getElementById('dynamic-clock');
   const bizCountEl = document.getElementById('dynamic-biz-count');
   const cricCountEl = document.getElementById('dynamic-cric-count');
