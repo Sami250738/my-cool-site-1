@@ -930,12 +930,13 @@ function initHomeDynamic() {
   cricketBtn.onclick = () => showPage('cricket');
 
   const highlights = [];
-  if (businessArticles.length) {
-    const latestBusinessArticle = businessArticles[businessArticles.length - 1];
+  const latestBusinessArticle = businessArticles.at(-1);
+  const latestCricketArticle = cricketArticles.at(-1);
+
+  if (latestBusinessArticle) {
     highlights.push({ type: 'biz', title: latestBusinessArticle.title, excerpt: latestBusinessArticle.excerpt, page: 'business' });
   }
-  if (cricketArticles.length) {
-    const latestCricketArticle = cricketArticles[cricketArticles.length - 1];
+  if (latestCricketArticle) {
     highlights.push({ type: 'cric', title: latestCricketArticle.title, excerpt: latestCricketArticle.excerpt, page: 'cricket' });
   }
 
@@ -950,14 +951,18 @@ function initHomeDynamic() {
     openBtn.onclick = () => showPage(item.page);
   }
 
-  if (highlights.length) {
-    let idx = 0;
-    renderHighlight(highlights[idx]);
-    if (highlights.length > 1) {
-      setInterval(() => {
-        idx = (idx + 1) % highlights.length;
-        renderHighlight(highlights[idx]);
-      }, 4500);
+  let idx = 0;
+  let rotateTimer = null;
+  let clockTimer = null;
+
+  function stopDynamicTimers() {
+    if (rotateTimer) {
+      clearInterval(rotateTimer);
+      rotateTimer = null;
+    }
+    if (clockTimer) {
+      clearInterval(clockTimer);
+      clockTimer = null;
     }
   }
 
@@ -972,8 +977,34 @@ function initHomeDynamic() {
     }) + ' • Live';
   }
 
+  if (highlights.length) {
+    renderHighlight(highlights[idx]);
+  }
+
+  function startDynamicTimers() {
+    stopDynamicTimers();
+    clockTimer = setInterval(updateClock, 60000);
+    if (highlights.length > 1) {
+      rotateTimer = setInterval(() => {
+        idx = (idx + 1) % highlights.length;
+        renderHighlight(highlights[idx]);
+      }, 4500);
+    }
+  }
+
+  function syncDynamicTimers() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    if (hash === 'home' && !document.hidden) {
+      startDynamicTimers();
+    } else {
+      stopDynamicTimers();
+    }
+  }
+
+  document.addEventListener('visibilitychange', syncDynamicTimers);
+  window.addEventListener('hashchange', syncDynamicTimers);
   updateClock();
-  setInterval(updateClock, 60000);
+  syncDynamicTimers();
 }
 
 let articleOrigin = 'business';
