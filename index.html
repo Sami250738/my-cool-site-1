@@ -908,6 +908,24 @@ const cricketArticles = [
 
 let homeDynamicInitialized = false;
 
+const CLOCK_UPDATE_INTERVAL_MS = 60000;
+const HIGHLIGHT_ROTATION_INTERVAL_MS = 4500;
+
+function parseArticleDateValue(dateText) {
+  const parsedDate = Date.parse(dateText);
+  return Number.isNaN(parsedDate) ? null : parsedDate;
+}
+
+function getMostRecentArticle(articles) {
+  return articles.reduce((latest, current) => {
+    if (!latest) return current;
+    const latestDate = parseArticleDateValue(latest.date);
+    const currentDate = parseArticleDateValue(current.date);
+    if (currentDate !== null && (latestDate === null || currentDate > latestDate)) return current;
+    return latest;
+  }, null);
+}
+
 function initHomeDynamic() {
   if (homeDynamicInitialized) return;
   homeDynamicInitialized = true;
@@ -930,8 +948,8 @@ function initHomeDynamic() {
   cricketBtn.onclick = () => showPage('cricket');
 
   const highlights = [];
-  const latestBusinessArticle = businessArticles.at(-1);
-  const latestCricketArticle = cricketArticles.at(-1);
+  const latestBusinessArticle = getMostRecentArticle(businessArticles);
+  const latestCricketArticle = getMostRecentArticle(cricketArticles);
 
   if (latestBusinessArticle) {
     highlights.push({ type: 'biz', title: latestBusinessArticle.title, excerpt: latestBusinessArticle.excerpt, page: 'business' });
@@ -983,12 +1001,12 @@ function initHomeDynamic() {
 
   function startDynamicTimers() {
     stopDynamicTimers();
-    clockTimer = setInterval(updateClock, 60000);
+    clockTimer = setInterval(updateClock, CLOCK_UPDATE_INTERVAL_MS);
     if (highlights.length > 1) {
       rotateTimer = setInterval(() => {
         idx = (idx + 1) % highlights.length;
         renderHighlight(highlights[idx]);
-      }, 4500);
+      }, HIGHLIGHT_ROTATION_INTERVAL_MS);
     }
   }
 
