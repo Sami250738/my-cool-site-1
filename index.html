@@ -64,6 +64,27 @@
   .hero-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .scroll-arrow { width: 14px; height: 14px; border-right: 1.5px solid rgba(255,255,255,0.25); border-bottom: 1.5px solid rgba(255,255,255,0.25); transform: rotate(45deg); animation: bounce 1.6s ease-in-out infinite; }
   @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
+   .home-dynamic { padding: 0 5% 70px; background: var(--navy); }
+  .home-dynamic-inner { max-width: 1100px; margin: 0 auto; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); padding: 1.6rem; }
+  .home-dynamic-top { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
+  .home-dynamic-top .section-label { margin-bottom: 0; color: var(--gold-light); }
+  .dynamic-clock { color: rgba(255,255,255,0.55); font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .home-dynamic-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1rem; }
+  .dynamic-highlight { background: rgba(255,255,255,0.05); border-left: 3px solid var(--gold); padding: 1.3rem; }
+  .dynamic-highlight.cric { border-left-color: #4caf50; }
+  .dynamic-badge { display: inline-block; font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 9px; margin-bottom: 0.7rem; }
+  .dynamic-badge.biz { background: rgba(184,149,42,0.15); color: var(--gold-light); }
+  .dynamic-badge.cric { background: rgba(76,175,80,0.16); color: #9ad59c; }
+  .dynamic-highlight-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; color: #fff; line-height: 1.25; margin-bottom: 0.7rem; }
+  .dynamic-highlight-text { color: rgba(255,255,255,0.68); margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.6; }
+  .dynamic-link { border: 1px solid rgba(255,255,255,0.25); background: transparent; color: #fff; padding: 0.55rem 1rem; font-family: 'Crimson Text', serif; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.78rem; cursor: pointer; }
+  .dynamic-link:hover { border-color: var(--gold-light); color: var(--gold-light); }
+  .dynamic-actions { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1.3rem; display: flex; flex-direction: column; gap: 0.8rem; }
+  .dynamic-action { border: none; cursor: pointer; font-family: 'Crimson Text', serif; text-align: left; padding: 0.72rem 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.83rem; }
+  .dynamic-action.biz { background: rgba(184,149,42,0.14); color: var(--gold-light); }
+  .dynamic-action.cric { background: rgba(76,175,80,0.16); color: #9ad59c; }
+  .dynamic-stats { border-top: 1px solid rgba(255,255,255,0.12); margin-top: 0.4rem; padding-top: 0.7rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; color: rgba(255,255,255,0.62); font-size: 0.84rem; }
+  .dynamic-stats strong { display: block; font-family: 'Playfair Display', serif; color: #fff; font-size: 1.35rem; line-height: 1.1; }
   .about-section { padding: 90px 5%; background: var(--cream); }
   .about-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .section-label { font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; font-family: 'Crimson Text', serif; }
@@ -209,6 +230,7 @@
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .hero-sections { flex-direction: column; align-items: center; }
     .section-card { width: 100%; max-width: 300px; }
+    .home-dynamic-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; }
     .about-me-header-inner { grid-template-columns: 1fr; text-align: center; }
@@ -263,6 +285,31 @@
     </div>
   </section>
 
+   <section class="home-dynamic">
+    <div class="home-dynamic-inner fade-in">
+      <div class="home-dynamic-top">
+        <p class="section-label">Live Content Highlights</p>
+        <p class="dynamic-clock" id="dynamic-clock">Updating...</p>
+      </div>
+      <div class="home-dynamic-grid">
+        <article class="dynamic-highlight" id="dynamic-highlight">
+          <span class="dynamic-badge biz" id="dynamic-badge">Business</span>
+          <h3 class="dynamic-highlight-title" id="dynamic-title">Latest article will appear here</h3>
+          <p class="dynamic-highlight-text" id="dynamic-excerpt">A rotating preview of your latest business and cricket writing.</p>
+          <button class="dynamic-link" id="dynamic-open">Open Section</button>
+        </article>
+        <aside class="dynamic-actions">
+          <button class="dynamic-action biz" id="dynamic-business-btn">Go to Business Articles →</button>
+          <button class="dynamic-action cric" id="dynamic-cricket-btn">Go to Cricket Articles →</button>
+          <div class="dynamic-stats">
+            <div><strong id="dynamic-biz-count">0</strong> Business posts</div>
+            <div><strong id="dynamic-cric-count">0</strong> Cricket posts</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+ 
   <section class="about-section">
     <div class="about-grid">
       <div class="about-text fade-in">
@@ -859,6 +906,128 @@ const cricketArticles = [
   }
 ];
 
+ let isHomeDynamicInitialized = false;
+
+// Update clock once per minute for low-overhead live time display.
+const CLOCK_UPDATE_INTERVAL_MS = 60000;
+// Rotate highlights fast enough to feel dynamic without distracting readers.
+const HIGHLIGHT_ROTATION_INTERVAL_MS = 4500;
+const LIVE_CLOCK_SUFFIX = ' • Live';
+
+function parseArticleDateToTimestamp(dateText) {
+  const parsedDate = Date.parse(dateText);
+  return isNaN(parsedDate) ? null : parsedDate;
+}
+
+function getMostRecentArticle(articles) {
+  return articles.reduce((latest, current) => {
+    if (!latest) return current;
+    const latestDate = parseArticleDateToTimestamp(latest.date);
+    const currentDate = parseArticleDateToTimestamp(current.date);
+    if (currentDate !== null && (latestDate === null || currentDate > latestDate)) return current;
+    return latest;
+  }, null);
+}
+
+function initHomeDynamic() {
+  if (isHomeDynamicInitialized) return;
+  isHomeDynamicInitialized = true;
+  const clockEl = document.getElementById('dynamic-clock');
+  const bizCountEl = document.getElementById('dynamic-biz-count');
+  const cricCountEl = document.getElementById('dynamic-cric-count');
+  const highlight = document.getElementById('dynamic-highlight');
+  const badge = document.getElementById('dynamic-badge');
+  const title = document.getElementById('dynamic-title');
+  const excerpt = document.getElementById('dynamic-excerpt');
+  const openBtn = document.getElementById('dynamic-open');
+  const businessBtn = document.getElementById('dynamic-business-btn');
+  const cricketBtn = document.getElementById('dynamic-cricket-btn');
+
+  if (!clockEl || !bizCountEl || !cricCountEl || !highlight || !badge || !title || !excerpt || !openBtn || !businessBtn || !cricketBtn) return;
+
+  bizCountEl.textContent = String(businessArticles.length);
+  cricCountEl.textContent = String(cricketArticles.length);
+  businessBtn.onclick = () => showPage('business');
+  cricketBtn.onclick = () => showPage('cricket');
+
+  const highlights = [];
+  const latestBusinessArticle = getMostRecentArticle(businessArticles);
+  const latestCricketArticle = getMostRecentArticle(cricketArticles);
+
+  if (latestBusinessArticle) {
+    highlights.push({ type: 'biz', title: latestBusinessArticle.title, excerpt: latestBusinessArticle.excerpt, page: 'business' });
+  }
+  if (latestCricketArticle) {
+    highlights.push({ type: 'cric', title: latestCricketArticle.title, excerpt: latestCricketArticle.excerpt, page: 'cricket' });
+  }
+
+  function renderHighlight(item) {
+    const isBiz = item.type === 'biz';
+    highlight.classList.toggle('cric', !isBiz);
+    badge.className = 'dynamic-badge ' + (isBiz ? 'biz' : 'cric');
+    badge.textContent = isBiz ? 'Business' : 'Cricket';
+    title.textContent = item.title;
+    excerpt.textContent = item.excerpt;
+    openBtn.textContent = isBiz ? 'Open Business Section' : 'Open Cricket Section';
+    openBtn.onclick = () => showPage(item.page);
+  }
+
+  let idx = 0;
+  let rotateTimer = null;
+  let clockTimer = null;
+
+  function stopDynamicTimers() {
+    if (rotateTimer) {
+      clearInterval(rotateTimer);
+      rotateTimer = null;
+    }
+    if (clockTimer) {
+      clearInterval(clockTimer);
+      clockTimer = null;
+    }
+  }
+
+  function updateClock() {
+    const now = new Date();
+    clockEl.textContent = now.toLocaleString('en-US', {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    }) + LIVE_CLOCK_SUFFIX;
+  }
+
+  if (highlights.length) {
+    renderHighlight(highlights[idx]);
+  }
+
+  function startDynamicTimers() {
+    stopDynamicTimers();
+    updateClock();
+    clockTimer = setInterval(updateClock, CLOCK_UPDATE_INTERVAL_MS);
+    if (highlights.length > 1) {
+      rotateTimer = setInterval(() => {
+        idx = (idx + 1) % highlights.length;
+        renderHighlight(highlights[idx]);
+      }, HIGHLIGHT_ROTATION_INTERVAL_MS);
+    }
+  }
+
+  function syncDynamicTimers() {
+    const hash = window.location.hash.replace('#', '') || 'home';
+    if (hash === 'home' && !document.hidden) {
+      startDynamicTimers();
+    } else {
+      stopDynamicTimers();
+    }
+  }
+
+  document.addEventListener('visibilitychange', syncDynamicTimers);
+  window.addEventListener('hashchange', syncDynamicTimers);
+  syncDynamicTimers();
+}
+ 
 let articleOrigin = 'business';
  
 function showPage(name, options = {}) {
@@ -1012,6 +1181,7 @@ function loadFromHash() {
 window.addEventListener('DOMContentLoaded', () => {
   renderGrid('biz', businessArticles);
   renderGrid('cric', cricketArticles);
+  initHomeDynamic();
   loadFromHash();
 });
 
