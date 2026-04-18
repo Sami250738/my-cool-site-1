@@ -45,22 +45,9 @@
   .hero h1 span { color: var(--gold-light); }
   .hero-divider { width: 60px; height: 2px; background: var(--gold); margin: 1.4rem auto; }
   .hero-tagline { font-family: 'EB Garamond', serif; font-style: italic; font-size: 1.3rem; color: #a9a49a; max-width: 540px; margin-bottom: 2.8rem; }
-  .hero-sections { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
-  .section-card { width: 220px; padding: 1.8rem 1.5rem; cursor: pointer; border: 1.5px solid rgba(255,255,255,0.1); transition: transform 0.25s, background 0.25s; text-align: left; background: rgba(255,255,255,0.04); }
-  .section-card:hover { transform: translateY(-4px); }
-  .section-card.biz { border-top: 3px solid var(--gold); }
-  .section-card.biz:hover { background: rgba(184,149,42,0.1); }
-  .section-card.cric { border-top: 3px solid #4caf50; }
-  .section-card.cric:hover { background: rgba(76,175,80,0.1); }
-  .card-icon { font-size: 1.4rem; margin-bottom: 0.8rem; }
-  .card-label { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.3rem; }
-  .section-card.biz .card-label { color: var(--gold); }
-  .section-card.cric .card-label { color: #81c784; }
-  .card-title { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; font-weight: 600; margin-bottom: 0.5rem; }
-  .card-desc { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.5; margin-bottom: 1rem; }
-  .card-arrow { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
-  .section-card.biz .card-arrow { color: var(--gold-light); }
-  .section-card.cric .card-arrow { color: #81c784; }
+   .hero-photo-section { position: relative; width: 100%; max-width: 1000px; margin: 1.8rem auto 2.8rem; display: flex; justify-content: center; align-items: flex-end; height: clamp(260px, 42vw, 480px); }
+  .hero-name-backdrop { font-family: 'Playfair Display', serif; font-size: clamp(5.5rem, 17vw, 13rem); font-weight: 700; color: var(--gold-light); letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; white-space: nowrap; position: relative; z-index: 0; user-select: none; }
+  .hero-profile-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); z-index: 1; height: 100%; width: auto; max-width: clamp(200px, 34vw, 420px); object-fit: cover; object-position: center 12%; }
   .hero-scroll { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.25); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .scroll-arrow { width: 14px; height: 14px; border-right: 1.5px solid rgba(255,255,255,0.25); border-bottom: 1.5px solid rgba(255,255,255,0.25); transform: rotate(45deg); animation: bounce 1.6s ease-in-out infinite; }
   @keyframes bounce { 0%,100%{transform:rotate(45deg) translateY(0)} 50%{transform:rotate(45deg) translateY(5px)} }
@@ -228,8 +215,8 @@
   .portfolio-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.4rem; }
   @media (max-width: 800px) {
     .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .hero-sections { flex-direction: column; align-items: center; }
-    .section-card { width: 100%; max-width: 300px; }
+    .hero-photo-section { height: clamp(220px, 55vw, 360px); }
+    .hero-name-backdrop { font-size: clamp(4rem, 18vw, 7rem); }
     .home-dynamic-grid { grid-template-columns: 1fr; }
     .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; text-align: center; }
@@ -263,21 +250,9 @@
     <h1>Jayed <span>Insights</span></h1>
     <div class="hero-divider"></div>
     <p class="hero-tagline">Content writing at the intersection of business strategy and the beautiful game of cricket.</p>
-    <div class="hero-sections">
-      <div class="section-card biz" onclick="showPage('business')">
-        <div class="card-icon">📊</div>
-        <div class="card-label">Writing</div>
-        <div class="card-title">Business</div>
-        <div class="card-desc">Thought leadership, brand copy, market analysis &amp; more.</div>
-        <div class="card-arrow">Read articles →</div>
-      </div>
-      <div class="section-card cric" onclick="showPage('cricket')">
-        <div class="card-icon">🏏</div>
-        <div class="card-label">Writing</div>
-        <div class="card-title">Cricket</div>
-        <div class="card-desc">Match reports, player profiles, tactics &amp; cricket culture.</div>
-        <div class="card-arrow">Read articles →</div>
-      </div>
+     <div class="hero-photo-section">
+      <span class="hero-name-backdrop">JAYED</span>
+      <img class="hero-profile-img" src="profile2.jpg" alt="Jayed Sami">
     </div>
     <div class="hero-scroll">
       <span>Scroll</span>
