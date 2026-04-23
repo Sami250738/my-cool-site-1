@@ -205,85 +205,8 @@
   .cert-link { color: var(--navy); text-decoration: none; border-bottom: 1px dashed var(--gold); }
   .cert-link:hover { color: var(--gold); }
   .portfolio-note { font-size: 0.88rem; color: var(--text-muted); margin-top: 0.4rem; }
- .portfolio-event-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
-}
-
-.portfolio-event-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
-  border-color: #b9aa84;
-}
-
-.portfolio-event-image {
-  width: 100%;
-  height: 280px;
-  object-fit: cover;
-  display: block;
-}
-
-.portfolio-event-content {
-  padding: 1.5rem 1.7rem 1.8rem;
-}
-
-.portfolio-event-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 1rem;
-}
-
-.portfolio-event-tag {
-  background: rgba(26,77,46,0.12);
-  color: var(--green);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  font-family: 'Crimson Text', serif;
-  font-weight: 600;
-}
-
-.portfolio-event-date {
-  font-size: 0.84rem;
-  color: var(--text-muted);
-}
-
-.portfolio-event-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.7rem;
-  color: var(--navy);
-  margin-bottom: 0.45rem;
-  line-height: 1.2;
-}
-
-.portfolio-event-org {
-  font-size: 0.95rem;
-  color: var(--gold);
-  font-style: italic;
-  margin-bottom: 0.8rem;
-}
-
-.portfolio-event-desc {
-  font-size: 1rem;
-  color: var(--text-mid);
-  line-height: 1.7;
-  margin-bottom: 1.25rem;
-}
-
-.portfolio-event-link {
-  font-size: 0.86rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--green-light);
-}
+  .portfolio-project-card { cursor: pointer; transition: transform 0.22s, box-shadow 0.22s, background 0.22s; border: 1px solid transparent; border-radius: 4px; padding: 1rem; }
+  .portfolio-project-card:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); background: #fff; border-color: var(--border); }
   .portfolio-hero-image { width: 100%; max-height: 460px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 1.5rem; display: block; }
   .portfolio-detail-wrap { max-width: 1000px; margin: 0 auto; }
   .portfolio-detail-meta { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; margin-bottom: 1.4rem; color: var(--text-muted); font-size: 0.95rem; }
@@ -298,9 +221,6 @@
     .hero-sections { flex-direction: column; align-items: center; }
     .section-card { width: 100%; max-width: 300px; }
     .form-row { grid-template-columns: 1fr; }
-   .portfolio-event-image { height: 220px; }
-   .portfolio-event-content { padding: 1.2rem 1.2rem 1.4rem; }
-   .portfolio-event-title { font-size: 1.4rem; }
     footer { flex-direction: column; text-align: center; }
     .about-me-header-inner { grid-template-columns: 1fr; text-align: center; }
     .about-me-photo { margin: 0 auto; }
@@ -525,46 +445,16 @@
       <div class="about-me-grid">
         <div>
         <div class="about-block-title">Events and Projects</div>
-
-<div class="portfolio-event-card" onclick="openPortfolioProject('greenaugurate')">
-  <img src="Green.Hero.png" alt="Greenaugurate event cover" class="portfolio-event-image">
-
-  <div class="portfolio-event-content">
-    <div class="portfolio-event-top">
-      <span class="portfolio-event-tag">Event</span>
-      <span class="portfolio-event-date">Aug 2023 – Sep 2023</span>
-    </div>
-
-    <h3 class="portfolio-event-title">Greenaugurate</h3>
-    <p class="portfolio-event-org">Associated with University of Dhaka</p>
-    <p class="portfolio-event-desc">
-      A first-of-its-kind sustainability-focused event that brought together industry, academia,
-      partner brands, and students through competitions, collaboration, and inclusive engagement.
-    </p>
-
-    <div class="portfolio-event-link">View Event Story →</div>
-  </div>
-</div>
-         <div class="portfolio-event-card" onclick="openPortfolioProject('shocchota')">
-  <img src="purnota.1.png" alt="Project Shocchota cover" class="portfolio-event-image">
-
-  <div class="portfolio-event-content">
-    <div class="portfolio-event-top">
-      <span class="portfolio-event-tag">Project</span>
-      <span class="portfolio-event-date">Ramadan Campaign</span>
-    </div>
-
-    <h3 class="portfolio-event-title">Project স্বচ্ছতা (Shocchota)</h3>
-    <p class="portfolio-event-org">Associated with Purnota Foundation</p>
-    <p class="portfolio-event-desc">
-      A sustainability-focused Ramadan initiative providing long-term access to clean water
-      through tube well installations for underserved families across Bangladesh.
-    </p>
-
-    <div class="portfolio-event-link">View Project Story →</div>
-  </div>
-</div>
-   </div>
+         <div class="exp-item portfolio-project-card" onclick="openPortfolioProject('greenaugurate')">
+            <div class="exp-top"><div class="exp-role">Greenaugurate</div><div class="exp-date">Aug 2023 – Sep 2023</div></div>
+            <div class="exp-company">Associated with University of Dhaka</div>
+            <ul class="exp-bullets">
+              <li>Launched a multidimensional sustainability-focused event for the Department of Tourism and Hospitality Management</li>
+              <li>Connected industry, academia, students, faculty members, and partner brands under one inclusive platform</li>
+              <li>Click to view the full event story, achievements, contributions, and gallery</li>
+            </ul>
+          </div>  
+        </div>
         <div>
           <div class="about-block-title">Certificates</div>
           <div class="edu-item">
@@ -1489,42 +1379,6 @@ const cricketArticles = [
       '1699343306235 (1).png',
       'WhatsApp Image 2025-05-19.png',
       'WhatsApp Image 2025-10-22.png'
-    ]
-   
-  },
-  {
-    id: 'shocchota',
-    title: 'Project স্বচ্ছতা (Shocchota)',
-    heroImage: 'purnota.1.png',
-    subtitle: 'A clean-water initiative by Purnota Foundation focused on sustainable tube well installations for underserved families.',
-    date: 'Ramadan Campaign',
-    organization: 'Associated with Purnota Foundation',
-    description: `
-      <p>Project স্বচ্ছতা (Shocchota) is an initiative by the Purnota Foundation launched during the holy month of Ramadan with the goal of providing a long-term source of clean water to underprivileged families across Bangladesh.</p>
-      <p>Instead of focusing on short-term relief, this project emphasized sustainability by installing tube wells in remote areas, ensuring that families gain lasting access to safe drinking water.</p>
-      <p>Throughout the project, Purnota Foundation successfully constructed ten tube wells across various districts including Narayanganj, Kishoreganj, Koshreganj, and Lalmonirhat. Each installation directly benefited families lacking access to clean water and was made possible through collaborative efforts with youth organizations such as Smile – Secret of Your Happiness Foundation, Tarunner Ahobane, and Binnash Foundation.</p>
-    `,
-    highlights: [
-      'Built 10 tube wells across different districts of Bangladesh (PF-001 to PF-010)',
-      'Provided sustainable access to clean water for over 60 individuals from underserved families',
-      'Collaborated with multiple youth foundations and local organizations for field implementation',
-      'Engaged volunteers and donors nationwide through social media fundraising and community events',
-      'Ensured proper allocation of resources, including transportation and volunteer support'
-    ],
-    contributions: [
-      'Took the lead in fundraising through bKash, bank transfers, and on-campus campaigns at the Faculty of Business Studies, University of Dhaka',
-      'Managed and tracked all donations using Excel sheets for transparency and accurate budgeting',
-      'Designed and executed a fund distribution plan for tube wells, transportation, and volunteer meals',
-      'Contributed to achieving the project fundraising target of 200,000 BDT',
-      'Supported the successful installation of multiple tube wells across the country'
-    ],
-    images: [
-  'purnota.1.png',
-  'purnota.2.png',
-  'purnota.3.png',
-  'purnota.4.png',
-  'purnota.5.png',
-  'purnota.6.png'
     ]
   }
 ];
