@@ -312,7 +312,53 @@
     .about-me-grid { grid-template-columns: 1fr; gap: 2rem; }
     .about-me-badge { right: auto; left: 50%; transform: translateX(-50%); }
   }
-  @media (max-width: 520px) { .nav-links { display: none; } }
+ @media (max-width: 520px) {
+  .nav-links { 
+    display: none; 
+    position: fixed; 
+    top: 64px; 
+    left: 0; 
+    right: 0; 
+    background: var(--navy); 
+    flex-direction: column; 
+    padding: 1rem 5%; 
+    border-top: 1px solid var(--gold); 
+    z-index: 199; 
+  }
+  .nav-links.open { display: flex; }
+  .hamburger { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+    cursor: pointer; 
+    background: none; 
+    border: none; 
+    padding: 4px; 
+  }
+  .hamburger span { 
+    width: 22px; 
+    height: 2px; 
+    background: var(--gold-light); 
+    display: block; 
+  }
+  /* Fix 2 - Hero cards full width */
+  .section-card { width: 90%; max-width: 340px; }
+
+  /* Fix 3 - About grid single column */
+  .about-me-grid { grid-template-columns: 1fr; }
+
+  /* Fix 4 - Hero padding */
+  .hero { padding: 80px 4% 80px; }
+  .hero-scroll { display: none; }
+
+  /* Fix 5 - CTA section */
+  .home-cta-grid { grid-template-columns: 1fr; }
+  .home-contact-bar { flex-direction: column; align-items: stretch; }
+  .home-contact-pill { text-align: center; justify-content: center; }
+}
+@media (min-width: 521px) { 
+  .hamburger { display: none; } 
+}
 </style>
 </head>
 <body>
@@ -324,8 +370,13 @@
     <li><button id="nav-business" onclick="showPage('business')">Business</button></li>
     <li><button id="nav-cricket" onclick="showPage('cricket')">Cricket</button></li>
   <li><button id="nav-about" onclick="showPage('about')">Portfolio</button></li>
-    <li><button onclick="gotoContact()">Contact</button></li>
+    <li><button onclick="gotoContact()">Contact</button></li> 
   </ul>
+ <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 </nav>
 
 <!-- HOME -->
